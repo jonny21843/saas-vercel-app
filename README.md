@@ -1,40 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# SaaS Consultation App (Vercel Serverless Edition)
 
-## Getting Started
+![Next.js](https://img.shields.io/badge/Next.js-16.1.6-black?style=for-the-badge&logo=next.js)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-First, run the development server:
+A serverless-first SaaS template designed for the Vercel ecosystem. This version leverages Vercel’s native ability to run both a React frontend and Python backend functions in a distributed, zero-config environment.
 
-```bash
+## 🧠 How It Works: Serverless Integration
+This repository is structured to take advantage of Vercel’s "Zero Config" deployments:
+1. Frontend: Next.js handles the UI and client-side routing.
+2. Backend: Any Python files placed in the /api directory are automatically detected by Vercel and deployed as independent Serverless Functions.
+3. Proxying: During development, the Next.js dev server automatically proxies requests to the Python backend, allowing you to build the entire app locally with one command.
+
+## ✨ Key Features
+- Speed: Next.js 16 with Turbopack for lightning-fast development iterations.
+- Scalability: Serverless Python functions scale to zero when not in use, saving costs.
+- Auth: Clerk integration provides a seamless "Sign In / Sign Up" flow out of the box.
+- Modern UI: Tailwind CSS 4.0 for utility-first styling and rapid prototyping.
+
+## 📂 Project Structure
+- /api: Python serverless functions (each file represents a route).
+- /pages: Next.js frontend using the Pages router.
+- /styles: Global CSS and Tailwind configurations.
+- requirements.txt: Python dependencies for the serverless backend.
+
+## ⚡ Local Development
+
+1. Install Dependencies:
+npm install
+pip install -r requirements.txt
+
+2. Environment Config:
+Add your Clerk keys to .env.local:
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
+CLERK_SECRET_KEY=sk_test_...
+
+3. Launch:
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The app will be available at http://localhost:3000.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Deployment
+1. Connect your GitHub repository to Vercel.
+2. Vercel will auto-detect Next.js and the Python /api folder.
+3. Add your Environment Variables in the Vercel dashboard.
+4. Deployment happens automatically on every 'git push'.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+---
+Created by Jonathan Feagans
